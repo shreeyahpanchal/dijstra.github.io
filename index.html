@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijkstra's Algorithm Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Dijkstra's Algorithm Simulation</h1>
+            <div class="underline"></div>
+            <div class="buttons">
+                <button id="addEdgeBtn" class="btn add-edge">Add Edge</button>
+                <button id="runAlgorithmBtn" class="btn run-algorithm">Run Algorithm</button>
+                <button id="resetBtn" class="btn reset">Reset</button>
+                <button id="helpBtn" class="btn help">Help</button>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="graph-container">
+                <canvas id="graphCanvas"></canvas>
+            </div>
+            
+            <div class="results-container">
+                <div class="results-panel">
+                    <h2>Shortest Path Results</h2>
+                    <div id="shortestPathResults"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Graph Modal -->
+    <div id="createGraphModal" class="modal">
+        <div class="modal-content">
+            <h2>Create Graph</h2>
+            <div class="form-group">
+                <label for="numNodes">Number of Nodes:</label>
+                <input type="number" id="numNodes" min="2" value="5">
+            </div>
+            <div class="modal-buttons">
+                <button id="createGraphBtn" class="btn primary">Create</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Edge Modal -->
+    <div id="addEdgeModal" class="modal">
+        <div class="modal-content">
+            <h2>Add Edge</h2>
+            <div class="form-group">
+                <label for="fromNode">From Node:</label>
+                <select id="fromNode"></select>
+            </div>
+            <div class="form-group">
+                <label for="toNode">To Node:</label>
+                <select id="toNode"></select>
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" min="1" value="1">
+            </div>
+            <div class="modal-buttons">
+                <button id="addEdgeSubmitBtn" class="btn primary">Add</button>
+                <button id="addEdgeCancelBtn" class="btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Run Algorithm Modal -->
+    <div id="runAlgorithmModal" class="modal">
+        <div class="modal-content">
+            <h2>Select Source Node</h2>
+            <div class="form-group">
+                <label for="sourceNode">Source Node:</label>
+                <select id="sourceNode"></select>
+            </div>
+            <div class="modal-buttons">
+                <button id="startAlgorithmBtn" class="btn primary">Start</button>
+                <button id="cancelAlgorithmBtn" class="btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content help-content">
+            <h2>How to Use</h2>
+            <ul>
+                <li><strong>Create Graph:</strong> Specify the number of nodes you want in your graph.</li>
+                <li><strong>Add Edge:</strong> Click "Add Edge" and select the source, destination, and weight to connect nodes.</li>
+                <li><strong>Run Algorithm:</strong> Click "Run Algorithm" to select a source node and visualize Dijkstra's algorithm.</li>
+                <li><strong>Reset:</strong> Click "Reset" to clear the current simulation and start over.</li>
+            </ul>
+            
+            <h3>About Dijkstra's Algorithm</h3>
+            <p>Dijkstra's algorithm finds the shortest path from a source node to all other nodes in a weighted graph. It works by:</p>
+            <ol>
+                <li>Initializing distances to all nodes as infinity except the source (0)</li>
+                <li>Selecting the unvisited node with the smallest distance</li>
+                <li>Updating distances to neighbors if a shorter path is found</li>
+                <li>Marking the current node as visited</li>
+                <li>Repeating until all nodes are visited</li>
+            </ol>
+            
+            <div class="modal-buttons">
+                <button id="closeHelpBtn" class="btn primary">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
